@@ -1,0 +1,24 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: action
+name: Waggle release notice
+description: Prints a release notice to the log
+inputs:
+  service:
+    description: The Waggle service being released
+    required: true
+  environment:
+    description: The target environment
+    required: false
+    default: staging
+runs:
+  steps:
+    - name: Print release notice
+      uses: docker://alpine:latest
+      run: |
+        echo "=================================================="
+        echo " Waggle Inc. - release notice"
+        echo "=================================================="
+        echo " Service: ${{ inputs.service }}"
+        echo " Environment: ${{ inputs.environment }}"
+        echo " Commit: ${{ cloudbees.scm.sha }}"
+        echo "=================================================="
