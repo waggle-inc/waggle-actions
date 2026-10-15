@@ -6,6 +6,7 @@ flag: default.expressShipping
 flagType: boolean
 description: Enables express shipping for orders in the shipping portal.
 labels:
+  - delivery
 
 availableValues:
   - "true"
