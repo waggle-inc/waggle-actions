@@ -1,0 +1,34 @@
+---
+apiVersion: featuremanagement.cloudbees.io/v1alpha1
+kind: flag-configuration
+
+flag: sameDayDeliverySlots
+
+enabled: true
+
+stickinessProperty: rox.distinct_id
+
+defaultValue:
+  valueWrittenInCode: true
+
+conditions:
+  - allOf:
+      - property:
+          name: accountTier
+          operator: in-array
+          operands:
+            - enterprise
+    flagValue: false
+  - allOf:
+      - property:
+          name: region
+          operator: in-array
+          operands:
+            - US-West
+            - US-Southwest
+            - US-Mountain
+    flagValue:
+      - percentage: 25
+        option: true
+      - percentage: 75
+        option: false

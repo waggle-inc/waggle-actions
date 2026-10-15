@@ -1,0 +1,16 @@
+---
+apiVersion: featuremanagement.cloudbees.io/v1alpha1
+kind: flag
+
+flag: sameDayDeliverySlots
+flagType: boolean
+description: Enables same-day delivery slot selection at checkout. Rolling out progressively by region.
+labels:
+  - delivery
+  - checkout
+
+availableValues:
+  - "true"
+  - "false"
+
+isPermanent: false
